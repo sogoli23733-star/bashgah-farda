@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<title>باشگاه فردا</title>
+
+<style>
+
+body{
+    background:#14213d;
+    text-align:center;
+    font-family:tahoma;
+}
+
+#game{
+    width:500px;
+    margin:auto;
+    padding:20px;
+    background:#fca311;
+    border-radius:10px;
+}
+
+img{
+    width:150px;
+    height:150px;
+    cursor:pointer;
+}
+
+button{
+    margin-top:20px;
+    padding:10px 25px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="game">
+
+<h2>باشگاه فردا</h2>
+
+<div id="board"></div>
+
+<button onclick="location.reload()">بازی دوباره</button>
+
+</div>
+
+<script>
+
+let numbers=[1,2,3,4,5,6,7,8,9];
+
+numbers.sort(()=>Math.random()-0.5);
+
+const board=document.getElementById("board");
+
+numbers.forEach(function(num){
+
+let img=document.createElement("img");
+
+img.src="img/"+num+".jpg";
+
+img.onclick=function(){
+select(this);
+}
+
+board.appendChild(img);
+
+});
+
+let first=null;
+
+function select(pic){
+
+if(first==null){
+
+first=pic;
+
+pic.style.border="4px solid red";
+
+}
+else{
+
+let temp=pic.src;
+
+pic.src=first.src;
+
+first.src=temp;
+
+first.style.border="none";
+
+first=null;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
